@@ -12,7 +12,7 @@ public class Main {
 
         Dish dish = dao.findDishById(1);
         System.out.println("Plat : " + dish.getName());
-
+        System.out.println("Cout : " + dish.getDishCost());
         try {
             System.out.println("Marge : " + dish.getGrossMargin());
         } catch (RuntimeException e) {
