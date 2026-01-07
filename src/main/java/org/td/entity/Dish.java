@@ -3,23 +3,31 @@ package org.td.entity;
 
 public class Dish {
 
-    private int id;
+    private Integer id;
     private String name;
-    private double price;
-    private DishTypeEnum type;
-    private CategoryEnum category;
+    private Double price;
+    private Double ingredientsCost;
 
-    public Dish(int id, String name, double price, DishTypeEnum type, CategoryEnum category) {
+    public Dish(Integer id, String name, Double price, Double ingredientsCost) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.type = type;
-        this.category = category;
+        this.ingredientsCost = ingredientsCost;
     }
 
-    public int getId() { return id; }
+    public Double getDishCost() {
+        return ingredientsCost;
+    }
+
+    public Double getGrossMargin() {
+        if (price == null) {
+            throw new RuntimeException("Prix de vente non défini");
+        }
+        return price - ingredientsCost;
+    }
+
+    public Integer getId() { return id; }
     public String getName() { return name; }
-    public double getPrice() { return price; }
-    public DishTypeEnum getType() { return type; }
-    public CategoryEnum getCategory() { return category; }
+    public Double getPrice() { return price; }
+    public void setPrice(Double price) { this.price = price; }
 }
